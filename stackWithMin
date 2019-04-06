@@ -1,0 +1,45 @@
+class MinStack {
+	   
+	   private Deque<Integer> stack = new LinkedList<>();
+	   private Deque<Integer> min = new LinkedList<>();
+	   
+	   public void push(int value) {
+		   stack.push(value);
+		   if(min.isEmpty() || value<=min.peek()) {
+			   min.push(value);
+		   }
+	   }
+	   
+	   public Integer pop() {
+		   if(stack.isEmpty()) {
+			   return null;
+		   }
+		   int result = stack.pop();
+		   if(result == min.peek()) {
+			   min.pop();
+		   }
+		   return result;
+	   }
+	   
+	   public Integer peek() {
+		   if(stack.isEmpty()) {
+			   return null;
+		   }
+		   return stack.peek();
+	   }
+	   
+	   public Integer min() {
+		   if(min.isEmpty()) {
+			   return null;
+		   }
+		   return min.peek();
+	   }
+	   
+	   public int size() {
+		   return stack.size();
+	   }
+	   
+	   public boolean isEmpty() {
+		   return stack.isEmpty();
+	   }
+   }
